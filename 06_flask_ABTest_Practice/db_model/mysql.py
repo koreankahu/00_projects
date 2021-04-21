@@ -1,6 +1,5 @@
 import pymysql
 
-
 MYSQL_HOST = 'localhost'
 MYSQL_CONN = pymysql.connect(
     host=MYSQL_HOST,
@@ -15,5 +14,4 @@ MYSQL_CONN = pymysql.connect(
 def conn_mysqldb():
     if not MYSQL_CONN.open:
         MYSQL_CONN.ping(reconnect=True)
-
     return MYSQL_CONN

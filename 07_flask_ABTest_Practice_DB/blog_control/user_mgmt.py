@@ -1,6 +1,7 @@
 from flask_login import UserMixin
 from db_model.mysql import conn_mysqldb
 
+
 class User(UserMixin):
 
     def __init__(self, user_id, user_email, blog_id):
@@ -21,25 +22,24 @@ class User(UserMixin):
         user = db_cursor.fetchone()
         if not user:
             return None
-        
+
         user = User(user_id=user[0], user_email=user[1], blog_id=user[2])
         return user
-
 
     @staticmethod
     def find(user_email):
         mysql_db = conn_mysqldb()
         db_cursor = mysql_db.cursor()
-        sql = "SELECT * FROM user_info WHERE USER_EMAIL = '" + str(user_email) + "'"
+        sql = "SELECT * FROM user_info WHERE USER_EMAIL = '" + \
+            str(user_email) + "'"
         # print (sql)
         db_cursor.execute(sql)
         user = db_cursor.fetchone()
         if not user:
             return None
-        
+
         user = User(user_id=user[0], user_email=user[1], blog_id=user[2])
         return user
-
 
     @staticmethod
     def create(user_email, blog_id):
@@ -47,7 +47,8 @@ class User(UserMixin):
         if user == None:
             mysql_db = conn_mysqldb()
             db_cursor = mysql_db.cursor()
-            sql = "INSERT INTO user_info (USER_EMAIL, BLOG_ID) VALUES ('%s', '%s')" % (str(user_email), str(blog_id))
+            sql = "INSERT INTO user_info (USER_EMAIL, BLOG_ID) VALUES ('%s', '%s')" % (
+                str(user_email), str(blog_id))
             db_cursor.execute(sql)
             mysql_db.commit()
             return User.find(user_email)

@@ -1,16 +1,16 @@
 from flask import Flask, jsonify, request, render_template
 app = Flask(__name__, static_url_path='/static')
-#! 모든 다른 파일들은 static 에다가 넣겠다는 옵션 표시
 session_count = 0
 
 
 @app.route('/login')
 def login():
-    email_address = request.args.get("email_address")
-    passwd = request.args.get("passwd")
+    email_address = request.args.get('email_address')
+    passwd = request.args.get('passwd')
     print(email_address, passwd)
 
-    if email_address == 'dave@gmail.com':
+    if email_address == 'dave@gmail.com' and passwd == '111':
+
         return_data = {'auth': 'success'}
     else:
         return_data = {'auth': 'failed'}
@@ -39,4 +39,4 @@ def blog_html():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port="8081")
+    app.run(host="0.0.0.0", port="8080")

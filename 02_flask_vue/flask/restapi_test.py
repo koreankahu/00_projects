@@ -5,7 +5,7 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/test', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@app.route("/test", methods=['GET', 'POST', 'PUT', 'DELETE'])
 def test():
     if request.method == 'POST':
         print('POST')
@@ -13,19 +13,19 @@ def test():
         print(data)
         print(data['email'])
     if request.method == 'GET':
-        print("GET")
+        print('GET')
         user = request.args.get('email')
         print(user)
-    if request.method == "PUT":
-        print("PUT")
+    if request.method == 'PUT':
+        print('PUT')
         user = request.args.get('email')
         print(user)
-    if request.method == "DELETE":
-        print("DELETE")
+    if request.method == 'DELETE':
+        print('DELETE')
         user = request.args.get('email')
         print(user)
 
-    return make_response(jsonify({"status": True}), 200)
+    return make_response(jsonify({'status': True}), 200)
 
 
 if __name__ == '__main__':
