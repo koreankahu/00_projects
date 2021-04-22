@@ -9,7 +9,7 @@ class BlogSession():
     @staticmethod
     def save_session_info(session_ip, user_email, webpage_name):
         now = datetime.now()
-        now_time = now.strftime("%d/%m/%Y %H:%M:%S")  # https://strftime.org/
+        now_time = now.strftime("%d/%m/%Y %H:%M:%S")
 
         mongo_db = conn_mongodb()
         mongo_db.insert_one({
