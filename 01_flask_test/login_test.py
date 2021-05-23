@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
+#그냥 수정 깃올릴려고
 
 
 @app.route('/login')
