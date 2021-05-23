@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request, render_template
+
 app = Flask(__name__)
 
 
@@ -7,8 +8,8 @@ def login():
     username = request.args.get('user_name')
     passwd = request.args.get('pw')
     email = request.args.get('email_address')
-    print (username, passwd, email)
-    
+    print(username, passwd, email)
+
     if username == 'dave':
         return_data = {'auth': 'success'}
     else:
