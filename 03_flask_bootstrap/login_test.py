@@ -1,15 +1,16 @@
 from flask import Flask, jsonify, request, render_template
-app = Flask(__name__, static_url_path='/static')
+
+app = Flask(__name__, static_url_path="/static")
 session_count = 0
 
 
 @app.route('/login')
 def login():
-    email_address = request.args.get('email_address')
-    passwd = request.args.get('passwd')
+    email_address = request.args.get("email_address")
+    passwd = request.args.get("passwd")
     print(email_address, passwd)
 
-    if email_address == 'dave@gmail.com' and passwd == '111':
+    if email_address == 'dave@gmail.com':
 
         return_data = {'auth': 'success'}
     else:
@@ -39,4 +40,4 @@ def blog_html():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port="8080")
+    app.run(host="0.0.0.0", port="8080", debug=True)
